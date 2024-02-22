@@ -14,12 +14,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     age: {
-        type: Number,
-        required: true
+        type: Number
     },
     location: {
-        type: String,
-        required: true
+        type: String
     }
 });
 module.exports = mongoose.model("User", userSchema)
