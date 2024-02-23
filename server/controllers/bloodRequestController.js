@@ -43,4 +43,26 @@ const updateBloodRequest = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { addBloodRequest, updateBloodRequest }
+// @Desc DELETE bloodRequest
+// @Route /user/deleteBloodRequest/:bloodRequest_id
+// @Access private
+
+const deleteBloodRequest = asyncHandler(async (req, res) => {
+    const bloodRequestId = req.params.bloodRequest_id;
+    try {
+        const bloodRequest = await Blood.findByIdAndDelete(bloodRequestId);
+        res.send("Blood Request was deleted sucessfully")
+    } catch (error) {
+        res.status(400).json({ message: "Blood Request was not deleted!" })
+    }
+})
+
+// @Desc GET bloodRequests
+// @Route /user/getBloodRequests
+// @Access private
+
+// const getBloodRequests=asyncHandler(async(req, res)=>{
+//     const bloodRequests=
+// })
+
+module.exports = { addBloodRequest, updateBloodRequest, deleteBloodRequest }
