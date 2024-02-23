@@ -29,6 +29,11 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
+
+//@Desc Register User
+//@Route /api/register
+//@Access public
+
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = await req.body;
     if (!email || !password) {
