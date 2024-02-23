@@ -30,8 +30,8 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
-//@Desc Register User
-//@Route /api/register
+//@Desc Login User
+//@Route /api/login
 //@Access public
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -46,9 +46,7 @@ const loginUser = asyncHandler(async (req, res) => {
             user: {
                 fullName: user.fullName,
                 email: user.email,
-                password: user.password,
-                age: user.age,
-                location: user.location
+                id: user.id,
             }
         }, process.env.SECRET_ACCESS_KEY, { expiresIn: "1h" }
         )

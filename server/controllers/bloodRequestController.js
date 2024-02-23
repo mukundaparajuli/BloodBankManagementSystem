@@ -10,9 +10,10 @@ const addBloodRequest = asyncHandler(async (req, res) => {
     if (!bloodGroup || !location || !preferredAge) {
         res.send(400).json({ message: "All fields are mandatory to be filled!" });
     }
-    console.log(req)
+    // console.log(req)
     try {
-        const bloodRequest = await Blood.create({ bloodGroup, location, preferredAge });
+        console.log(req.user);
+        const bloodRequest = await Blood.create({ user_id: req.user.id, bloodGroup, location, preferredAge });
         res.json(bloodRequest)
     } catch (err) {
         console.log(err)
@@ -30,7 +31,6 @@ const updateBloodRequest = asyncHandler(async (req, res) => {
         res.status(404).json({ message: "Blood Request not found!" });
     }
     const { bloodGroup, location, preferredAge } = req.body;
-    console.log(req.body)
     try {
         bloodRequest.bloodGroup = bloodGroup;
         bloodRequest.location = location;
@@ -61,8 +61,12 @@ const deleteBloodRequest = asyncHandler(async (req, res) => {
 // @Route /user/getBloodRequests
 // @Access private
 
-// const getBloodRequests=asyncHandler(async(req, res)=>{
-//     const bloodRequests=
-// })
+const getBloodRequests = asyncHandler(async (req, res) => {
+    const bloodRequests =await Blood.find({ user_id: req.user.id });
+    if (!bloodRequests) {
+        res.status(400).json({ message: "Blood Request was not found!" });
+    }
+    res.json(bloodRequests)
+})
 
-module.exports = { addBloodRequest, updateBloodRequest, deleteBloodRequest }
+module.exports = { addBloodRequest, updateBloodRequest, deleteBloodRequest, getBloodRequests }
