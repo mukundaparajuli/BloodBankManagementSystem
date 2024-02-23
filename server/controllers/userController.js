@@ -41,16 +41,27 @@ const loginUser = asyncHandler(async (req, res) => {
     }
     const user = await User.findOne({ email });
     if (user && await bcrypt.compare(password, user.password)) {
-        res.json({ email, password })
         const accessToken = jwt.sign({
             user: {
                 fullName: user.fullName,
                 email: user.email,
                 id: user.id,
+                location: user.location,
+                age: user.age,
             }
         }, process.env.SECRET_ACCESS_KEY, { expiresIn: "1h" }
         )
-        console.log(accessToken)
+        res.status(200).json({ accessToken });
+    } else {
+        res.status(400)
+        throw new Error("Invalid Input");
     }
+});
+
+// @Desc GET userInfo
+// @Route /userInfo/
+// @Access private
+const getUserInfo = asyncHandler(async (req, res) => {
+    res.json(req.user)
 })
-module.exports = { registerUser, loginUser }
+module.exports = { registerUser, loginUser, getUserInfo }
