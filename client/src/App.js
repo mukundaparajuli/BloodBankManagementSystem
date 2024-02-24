@@ -3,9 +3,9 @@ import MainDisplay from './components/MainDisplay';
 
 function App() {
   return (
-    <div className='realtive' style={{height: 'calc(100vh-80px)'}}>
+    <div className='realtive' style={{ height: 'calc(100vh-80px)' }}>
       <Header />
-      <MainDisplay/>
+      <MainDisplay />
     </div>
   );
 }

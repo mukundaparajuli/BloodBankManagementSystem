@@ -4,7 +4,7 @@ import BloodRequestCards from './BloodRequestCards'
 
 const MainDisplay = () => {
     return (
-        <div className='static flex justify-between mt-24' >
+        <div className='flex justify-between mt-24 z-20 ' >
             <div className='h-full'>
                 <Categories />
             </div>

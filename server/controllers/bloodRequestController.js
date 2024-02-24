@@ -59,10 +59,10 @@ const deleteBloodRequest = asyncHandler(async (req, res) => {
 
 // @Desc GET bloodRequests
 // @Route /user/getBloodRequests
-// @Access private
+// @Access public
 
 const getBloodRequests = asyncHandler(async (req, res) => {
-    const bloodRequests =await Blood.find({ user_id: req.user.id });
+    const bloodRequests =await Blood.find({ user_id: "65d77baef21223b911de9a22" });
     if (!bloodRequests) {
         res.status(400).json({ message: "Blood Request was not found!" });
     }
