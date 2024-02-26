@@ -1,13 +1,18 @@
 import React from 'react'
+import { bloodReqdLogo } from '../store/config';
 
 const BloodRequestCard = (props) => {
   const { bloodGroup, location, preferredAge } = props;
   return (
-    <div>
-      <div className='h-52 w-56 bg-slate-200 m-2 p-2'>
-        <div>{bloodGroup}</div>
-        <div>{location}</div>
-        <div>{preferredAge}</div>
+    <div className='flex justify-evenly items-center rounded-xl h-40 shadow-xl m-2 p-2'>
+      <div className='h-40 w-36 m-2'>
+        <img src={bloodReqdLogo} alt='' className='h-40' />
+      </div>
+      <div className='h-full w-36 m-2'>
+        <div className='font-bold text-lg'>{bloodGroup}</div>
+        <div className='font-semibold text-sm italic'>Location: {location}</div>
+        <div className='font-semibold text-sm italic'>Preferred Age: {preferredAge}</div>
+        <button className='font-bold text-md text-white bg-green-500 w-full py-1 my-2 rounded-md'>Confirm</button>
       </div>
     </div>
   )

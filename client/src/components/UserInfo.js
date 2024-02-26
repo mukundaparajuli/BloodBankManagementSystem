@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import BloodRequestCard from './BloodRequestCard';
 
-const UserInfo = (token) => {
-    const [userInfo, setUserInfo] = useState([])
-    const handleGetUserInfo = async () => {
+const UserInfo = () => {
+    const [userRequests, setUserRequests] = useState([])
+    const handleGetUserRequests = async (token) => {
         try {
             const response = await fetch("http://localhost:5000/api/user/getRequests", {
                 method: "GET",
@@ -11,9 +12,9 @@ const UserInfo = (token) => {
                 }
             });
             if (response.ok) {
-                const userInfo = await response.json();
-                console.log(userInfo);
-                setUserInfo(userInfo)
+                const userRequests = await response.json();
+                console.log(userRequests);
+                setUserRequests(userRequests)
             }
         } catch (error) {
             console.log(error)
@@ -21,15 +22,20 @@ const UserInfo = (token) => {
     }
     useEffect(() => {
         const token = localStorage.getItem("Token");
-        handleGetUserInfo(token);
+        console.log(token);
+        token && handleGetUserRequests(token);
     }, []);
 
     return (
-        <div>
-            <div>{userInfo.fullName}</div>
-            <div></div>
+        <div className='w-[50vw] overflow-y-auto'>
+            <div className='userInfo'></div>
+            <div className='usersRequests flex justify-evenly w-full flex-wrap'>
+                {userRequests.map((item) => (
+                    <BloodRequestCard {...item} key={item.id} />
+                ))}
+            </div>
         </div>
     )
 }
 
-export default UserInfo
+export default UserInfo;
