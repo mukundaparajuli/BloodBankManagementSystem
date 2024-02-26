@@ -11,7 +11,6 @@ const vertifyJWT = asyncHandler(async (req, res, next) => {
             if (err) {
                 res.status(401).json({ message: "not verified!" })
             }
-            // console.log(decoded);
             req.user = decoded.user;
         })
     };

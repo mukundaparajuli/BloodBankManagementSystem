@@ -1,12 +1,27 @@
-import Header from './components/Header';
-import MainDisplay from './components/MainDisplay';
-
-function App() {
+import Login from './components/Login';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Dashboard from './components/Dashboard';
+import UserInfo from './components/UserInfo';
+const App = () => {
+  const appRouter = createBrowserRouter([
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/userInfo",
+      element: <UserInfo />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />
+    }
+  ])
   return (
-    <div className='realtive' style={{ height: 'calc(100vh-80px)' }}>
-      <Header />
-      <MainDisplay />
-    </div>
+    <RouterProvider router={appRouter}>
+      <Login />
+    </RouterProvider>
   );
 }
 
