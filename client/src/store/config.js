@@ -1,2 +1,2 @@
 export const bloodReqdLogo = "https://img.freepik.com/premium-vector/blood-drop-with-arrow-logo-blood-vector-illustration-blood-logo-simple-sign_7297-399.jpg"
-export const accountIcon= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT13smFh3l1VFAt1cUCKd76Y6F781OucKl7Tw&usqp=CAU";
+export const accountIcon= "https://static.thenounproject.com/png/4038155-200.png";

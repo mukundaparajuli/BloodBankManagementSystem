@@ -30,7 +30,7 @@ const BloodRequestCards = () => {
   }, [])
 
   return (
-    <div className='flex justify-evenly flex-wrap max-h-[calc(100vh-20px)] w-[50vw] fixed overflow-y-auto'>
+    <div className='flex justify-evenly flex-wrap max-h-[calc(100vh-20px)] overflow-y-auto'>
       {
         bloodRequests && bloodRequests.map((bloodReq) => (
           <Suspense fallback={<Shimmer />}>

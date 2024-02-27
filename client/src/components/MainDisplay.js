@@ -6,13 +6,16 @@ import UserInfo from './UserInfo'
 const MainDisplay = ({ showDetail }) => {
     return (
         <div className='flex justify-between mt-24 z-20 w-full' >
-            <div className='h-full'>
+          {FontFaceSetLoadEvent &&  <div className='h-full'>
                 <Categories />
-            </div>
-            <div className='h-full fixed'>
+            </div>}
+            <div className='h-full'>
                 <BloodRequestCards />
             </div>
-            {showDetail && <div className='fixed'><UserInfo /></div>
+            {showDetail &&
+                <div className='absolute right-0 max-h-[calc(100vh-20px)]'>
+                    <UserInfo />
+                </div>
             }
         </div>
     )

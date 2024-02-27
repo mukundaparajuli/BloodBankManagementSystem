@@ -4,7 +4,7 @@ import { bloodReqdLogo } from '../store/config';
 const BloodRequestCard = (props) => {
   const { bloodGroup, location, preferredAge } = props;
   return (
-    <div className='flex justify-evenly items-center rounded-xl h-40 shadow-xl m-2 p-2'>
+    <div className='flex justify-evenly items-center rounded-xl h-40 bg-white shadow-xl m-2 p-2'>
       <div className='h-40 w-36 m-2'>
         <img src={bloodReqdLogo} alt='' className='h-40' />
       </div>
